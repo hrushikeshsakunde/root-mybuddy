@@ -1,4 +1,11 @@
 {
+"repositories": [
+		{ "type": "composer", "url": "https://composer.typo3.org/" },
+		{ "type": "git", "url": "https://github.com/HofUniversityIndieOne/site-package-basics.git" },
+		{ "type": "git", "url": "https://github.com/hrushikeshsakunde/buddy-system.git" },
+		{ "type": "git", "url": "https://github.com/hrushikeshsakunde/extensions-mybuddy.git" },
+		{ "type": "git", "url": "https://github.com/hrushikeshsakunde/extensions-profilematching.git" }
+	],
 	"name": "typo3/cms",
 	"description": "TYPO3 CMS is a free open source Content Management Framework initially created by Kasper Skaarhoj and licensed under GNU/GPL.",
 	"keywords": ["typo3", "cms", "content management system", "extbase"],
