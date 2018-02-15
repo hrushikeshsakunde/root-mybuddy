@@ -1,0 +1,43 @@
+package com.example.tests;
+
+import com.thoughtworks.selenium.Selenium;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.WebDriver;
+import com.thoughtworks.selenium.webdriven.WebDriverBackedSelenium;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+import static org.junit.Assert.*;
+import java.util.regex.Pattern;
+import static org.apache.commons.lang3.StringUtils.join;
+
+public class User_Regist {
+	private Selenium selenium;
+
+	@Before
+	public void setUp() throws Exception {
+		WebDriver driver = new FirefoxDriver();
+		String baseUrl = "http://mybuddy.project.anyhost.it/";
+		selenium = new WebDriverBackedSelenium(driver, baseUrl);
+	}
+
+	@Test
+	public void testUser_Regist() throws Exception {
+		selenium.open("/");
+		selenium.click("css=a[title=\"Registration\"] > span.navbar-item-text");
+		selenium.waitForPageToLoad("30000");
+		selenium.type("id=femanager_field_username", "test15");
+		selenium.type("id=femanager_field_password", "1234");
+		selenium.type("id=femanager_field_password_repeat", "1234");
+		selenium.type("id=femanager_field_name", "Test user");
+		selenium.type("id=femanager_field_email", "test@test.com");
+		selenium.type("id=femanager_field_title", "MR");
+		selenium.type("id=femanager_field_dateOfBirth", "18/02/1990");
+		selenium.click("id=femanager_field_submit");
+	}
+
+	@After
+	public void tearDown() throws Exception {
+		selenium.stop();
+	}
+}

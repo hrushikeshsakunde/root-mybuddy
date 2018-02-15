@@ -1,0 +1,50 @@
+package com.example.tests;
+
+import com.thoughtworks.selenium.Selenium;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.WebDriver;
+import com.thoughtworks.selenium.webdriven.WebDriverBackedSelenium;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+import static org.junit.Assert.*;
+import java.util.regex.Pattern;
+import static org.apache.commons.lang3.StringUtils.join;
+
+public class UserLoginAndCompleteProfile {
+	private Selenium selenium;
+
+	@Before
+	public void setUp() throws Exception {
+		WebDriver driver = new FirefoxDriver();
+		String baseUrl = "http://mybuddy.project.anyhost.it/";
+		selenium = new WebDriverBackedSelenium(driver, baseUrl);
+	}
+
+	@Test
+	public void testUserLoginAndCompleteProfile() throws Exception {
+		selenium.open("/index.php?id=50");
+		selenium.click("css=span.navbar-item-text");
+		selenium.waitForPageToLoad("30000");
+		selenium.type("id=user", "test15");
+		selenium.type("id=pass", "1234");
+		selenium.click("name=submit");
+		selenium.click("//body[@id='p1']/div[2]/header/div/nav/ul/li[4]/a/span");
+		selenium.type("id=inputLinkMajor", "Computers");
+		selenium.type("id=inputLinkLanguage", "English,Marathi");
+		selenium.type("id=inputLinkActivity", "reading books");
+		selenium.type("id=inputLinkVisited", "Germany");
+		selenium.click("id=btnCreateQuestionnaires");
+		selenium.waitForPageToLoad("30000");
+		selenium.click("link=Home page");
+		selenium.waitForPageToLoad("30000");
+		selenium.click("css=span.navbar-item-text");
+		selenium.click("css=a[title=\"My Profile\"] > span.navbar-item-text");
+		selenium.waitForPageToLoad("30000");
+	}
+
+	@After
+	public void tearDown() throws Exception {
+		selenium.stop();
+	}
+}
